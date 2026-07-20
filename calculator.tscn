@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyouhxxleelbn"]
+
+[ext_resource type="Script" path="res://calculator.gd" id="1_idpfn"]
+[ext_resource type="Theme" uid="uid://dqoqk88xshw25" path="res://button_theme.tres" id="1_q3t4y"]
+
+[node name="calculator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idpfn")
+
+[node name="display" type="Label" parent="."]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 88.0
+offset_bottom = 47.0
+text = "result_here"
+
+[node name="buttons" type="GridContainer" parent="."]
+layout_mode = 1
+offset_top = 72.0
+offset_right = 215.0
+offset_bottom = 468.0
+theme_override_constants/h_separation = 40
+columns = 3
+
+[node name="7" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "7"
+
+[node name="8" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "8"
+
+[node name="9" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "9"
+
+[node name="4" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "4"
+
+[node name="5" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "5"
+
+[node name="6" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "6"
+
+[node name="1" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "1"
+
+[node name="2" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "2"
+
+[node name="3" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "3"
+
+[node name="comma" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "."
+
+[node name="0" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "0"
+
+[node name="=" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "="
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2.4, 2.4)
+
+[connection signal="pressed" from="buttons/4" to="." method="_on__pressed"]
