@@ -87,8 +87,46 @@ layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "="
 
+[node name="operations" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 72.0
+offset_right = 297.0
+offset_bottom = 468.0
+metadata/_edit_group_ = true
+
+[node name="x" type="Button" parent="operations"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "x"
+
+[node name="divide" type="Button" parent="operations"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "/"
+
+[node name="-" type="Button" parent="operations"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "-"
+
+[node name="+" type="Button" parent="operations"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "+"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2.4, 2.4)
 
-[connection signal="pressed" from="buttons/4" to="." method="_on__pressed"]
+[connection signal="pressed" from="buttons/7" to="." method="_on_7_pressed"]
+[connection signal="pressed" from="buttons/8" to="." method="_on_8_pressed"]
+[connection signal="pressed" from="buttons/9" to="." method="_on_9_pressed"]
+[connection signal="pressed" from="buttons/4" to="." method="_on_4_pressed"]
+[connection signal="pressed" from="buttons/5" to="." method="_on_5_pressed"]
+[connection signal="pressed" from="buttons/6" to="." method="_on_6_pressed"]
+[connection signal="pressed" from="buttons/1" to="." method="_on_1_pressed"]
+[connection signal="pressed" from="buttons/2" to="." method="_on_2_pressed"]
+[connection signal="pressed" from="buttons/3" to="." method="_on_3_pressed"]
+[connection signal="pressed" from="buttons/comma" to="." method="_on_comma_pressed"]
+[connection signal="pressed" from="buttons/0" to="." method="_on_0_pressed"]
