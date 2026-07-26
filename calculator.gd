@@ -18,7 +18,11 @@ func change_display(value) -> void:
 
 func on_number_pressed(number: int) -> void:
 	if display_value == "0":
-		display_value = str(number)
+		if current_opperation == ".":
+			display_value += str(".")
+			change_display(display_value)
+		else:
+			display_value = str(number)
 	else:
 		display_value += str(number)
 	change_display(display_value)
@@ -26,11 +30,27 @@ func on_number_pressed(number: int) -> void:
 
 func on_symbol_pressed(symbol: String) -> void:
 	print(symbol)
+	if symbol == "ce":
+		display_value = "0"
+		change_display(display_value)
+	if symbol == "ca":
+		display_value = "0"
+		last_value = str(0)
+		current_opperation = ""
+		change_display(display_value)
 	if symbol == "clear":
 		if display_value == "0":
 			pass
 		else:
 			display_value = display_value.left(display_value.length() - 1)
+			change_display(display_value)
+			
+	if symbol == ".":
+		if current_opperation == ".":
+			pass
+		else:
+			current_opperation = "."
+			display_value += str(".")
 			change_display(display_value)
 			
 	if symbol == "+":

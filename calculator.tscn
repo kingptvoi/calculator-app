@@ -42,6 +42,12 @@ text = "result_here"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="top_row" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 107.0
+offset_bottom = 96.0
+columns = 2
+
 [node name="buttons" type="GridContainer" parent="."]
 layout_mode = 1
 offset_left = 10.0
@@ -49,6 +55,21 @@ offset_top = 73.0
 offset_right = 228.0
 offset_bottom = 469.0
 columns = 3
+
+[node name="clear" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "c"
+
+[node name="ce" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "ce"
+
+[node name="ca" type="Button" parent="buttons"]
+layout_mode = 2
+theme = ExtResource("1_q3t4y")
+text = "ca"
 
 [node name="7" type="Button" parent="buttons"]
 custom_minimum_size = Vector2(70, 0)
@@ -98,20 +119,15 @@ layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "3"
 
-[node name="clear" type="Button" parent="buttons"]
+[node name="comma" type="Button" parent="buttons"]
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
-text = "c"
+text = "."
 
 [node name="0" type="Button" parent="buttons"]
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "0"
-
-[node name="=" type="Button" parent="buttons"]
-layout_mode = 2
-theme = ExtResource("1_q3t4y")
-text = "="
 
 [node name="operations" type="GridContainer" parent="."]
 layout_mode = 0
@@ -142,10 +158,23 @@ layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "+"
 
+[node name="=" type="Button" parent="."]
+custom_minimum_size = Vector2(144, 0)
+layout_mode = 2
+offset_left = 158.0
+offset_top = 397.0
+offset_right = 228.0
+offset_bottom = 474.0
+theme = ExtResource("1_q3t4y")
+text = "="
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2.4, 2.4)
 
+[connection signal="pressed" from="buttons/clear" to="." method="on_symbol_pressed" binds= ["clear"]]
+[connection signal="pressed" from="buttons/ce" to="." method="on_symbol_pressed" binds= ["ce"]]
+[connection signal="pressed" from="buttons/ca" to="." method="on_symbol_pressed" binds= ["ca"]]
 [connection signal="pressed" from="buttons/7" to="." method="on_number_pressed" binds= [7]]
 [connection signal="pressed" from="buttons/8" to="." method="on_number_pressed" binds= [8]]
 [connection signal="pressed" from="buttons/9" to="." method="on_number_pressed" binds= [9]]
@@ -155,10 +184,10 @@ zoom = Vector2(2.4, 2.4)
 [connection signal="pressed" from="buttons/1" to="." method="on_number_pressed" binds= [1]]
 [connection signal="pressed" from="buttons/2" to="." method="on_number_pressed" binds= [2]]
 [connection signal="pressed" from="buttons/3" to="." method="on_number_pressed" binds= [3]]
-[connection signal="pressed" from="buttons/clear" to="." method="on_symbol_pressed" binds= ["clear"]]
+[connection signal="pressed" from="buttons/comma" to="." method="on_symbol_pressed" binds= ["."]]
 [connection signal="pressed" from="buttons/0" to="." method="on_number_pressed" binds= [0]]
-[connection signal="pressed" from="buttons/=" to="." method="on_symbol_pressed" binds= ["="]]
 [connection signal="pressed" from="operations/mult" to="." method="on_symbol_pressed" binds= ["*"]]
 [connection signal="pressed" from="operations/div" to="." method="on_symbol_pressed" binds= ["/"]]
 [connection signal="pressed" from="operations/sub" to="." method="on_symbol_pressed" binds= ["-"]]
 [connection signal="pressed" from="operations/add" to="." method="on_symbol_pressed" binds= ["+"]]
+[connection signal="pressed" from="=" to="." method="on_symbol_pressed" binds= ["="]]
