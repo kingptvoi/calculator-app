@@ -23,10 +23,6 @@ func on_number_pressed(number: int) -> void:
 		display_value += str(number)
 	change_display(display_value)
 	print(number)
-	
-func addition(value):
-	var result: int = display_value + value
-	change_display(display_value)
 
 func on_symbol_pressed(symbol: String) -> void:
 	print(symbol)
@@ -55,10 +51,34 @@ func on_symbol_pressed(symbol: String) -> void:
 			display_value = "0"
 			change_display("0")
 			
+	if symbol == "/":
+		if display_value == "0":
+			display_value = "0"
+		else:
+			current_opperation = "/"
+			last_value = str(display_value)
+			display_value = "0"
+			change_display("0")
+			
+	if symbol == "-":
+		if display_value == "0":
+			display_value = "0"
+		else:
+			current_opperation = "-"
+			last_value = str(display_value)
+			display_value = "0"
+			change_display("0")
+			
 	if symbol == "=":
 		if current_opperation == "+":
 			display_value = str(str_to_var(display_value) + str_to_var(last_value))
 			change_display(display_value)
 		if current_opperation == "*":
 			display_value = str(str_to_var(display_value) * str_to_var(last_value))
+			change_display(display_value)
+		if current_opperation == "/":
+			display_value = str(str_to_var(last_value) / str_to_var(display_value))
+			change_display(display_value)
+		if current_opperation == "-":
+			display_value = str(str_to_var(last_value) - str_to_var(display_value))
 			change_display(display_value)
