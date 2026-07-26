@@ -12,32 +12,58 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_idpfn")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -431.0
+offset_bottom = -665.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.149637, 0.199082, 0.173376, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 301.0
+offset_bottom = 58.0
+color = Color(0.121569, 0.141176, 0.129412, 1)
+
 [node name="display" type="Label" parent="."]
 layout_mode = 0
-offset_top = 24.0
-offset_right = 88.0
-offset_bottom = 47.0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 295.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 24
 text = "result_here"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="buttons" type="GridContainer" parent="."]
 layout_mode = 1
-offset_top = 72.0
-offset_right = 215.0
-offset_bottom = 468.0
-theme_override_constants/h_separation = 40
+offset_left = 10.0
+offset_top = 73.0
+offset_right = 228.0
+offset_bottom = 469.0
 columns = 3
 
 [node name="7" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "7"
 
 [node name="8" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "8"
 
 [node name="9" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "9"
@@ -72,10 +98,10 @@ layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "3"
 
-[node name="comma" type="Button" parent="buttons"]
+[node name="clear" type="Button" parent="buttons"]
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
-text = "."
+text = "c"
 
 [node name="0" type="Button" parent="buttons"]
 layout_mode = 2
@@ -89,28 +115,29 @@ text = "="
 
 [node name="operations" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 252.0
-offset_top = 72.0
-offset_right = 297.0
-offset_bottom = 468.0
+offset_left = 232.0
+offset_top = 73.0
+offset_right = 302.0
+offset_bottom = 469.0
 metadata/_edit_group_ = true
 
-[node name="x" type="Button" parent="operations"]
+[node name="mult" type="Button" parent="operations"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "x"
 
-[node name="divide" type="Button" parent="operations"]
+[node name="div" type="Button" parent="operations"]
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "/"
 
-[node name="-" type="Button" parent="operations"]
+[node name="sub" type="Button" parent="operations"]
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "-"
 
-[node name="+" type="Button" parent="operations"]
+[node name="add" type="Button" parent="operations"]
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "+"
@@ -119,14 +146,19 @@ text = "+"
 anchor_mode = 0
 zoom = Vector2(2.4, 2.4)
 
-[connection signal="pressed" from="buttons/7" to="." method="_on_7_pressed"]
-[connection signal="pressed" from="buttons/8" to="." method="_on_8_pressed"]
-[connection signal="pressed" from="buttons/9" to="." method="_on_9_pressed"]
-[connection signal="pressed" from="buttons/4" to="." method="_on_4_pressed"]
-[connection signal="pressed" from="buttons/5" to="." method="_on_5_pressed"]
-[connection signal="pressed" from="buttons/6" to="." method="_on_6_pressed"]
-[connection signal="pressed" from="buttons/1" to="." method="_on_1_pressed"]
-[connection signal="pressed" from="buttons/2" to="." method="_on_2_pressed"]
-[connection signal="pressed" from="buttons/3" to="." method="_on_3_pressed"]
-[connection signal="pressed" from="buttons/comma" to="." method="_on_comma_pressed"]
-[connection signal="pressed" from="buttons/0" to="." method="_on_0_pressed"]
+[connection signal="pressed" from="buttons/7" to="." method="on_number_pressed" binds= [7]]
+[connection signal="pressed" from="buttons/8" to="." method="on_number_pressed" binds= [8]]
+[connection signal="pressed" from="buttons/9" to="." method="on_number_pressed" binds= [9]]
+[connection signal="pressed" from="buttons/4" to="." method="on_number_pressed" binds= [4]]
+[connection signal="pressed" from="buttons/5" to="." method="on_number_pressed" binds= [5]]
+[connection signal="pressed" from="buttons/6" to="." method="on_number_pressed" binds= [6]]
+[connection signal="pressed" from="buttons/1" to="." method="on_number_pressed" binds= [1]]
+[connection signal="pressed" from="buttons/2" to="." method="on_number_pressed" binds= [2]]
+[connection signal="pressed" from="buttons/3" to="." method="on_number_pressed" binds= [3]]
+[connection signal="pressed" from="buttons/clear" to="." method="on_symbol_pressed" binds= ["clear"]]
+[connection signal="pressed" from="buttons/0" to="." method="on_number_pressed" binds= [0]]
+[connection signal="pressed" from="buttons/=" to="." method="on_symbol_pressed" binds= ["="]]
+[connection signal="pressed" from="operations/mult" to="." method="on_symbol_pressed" binds= ["*"]]
+[connection signal="pressed" from="operations/div" to="." method="on_symbol_pressed" binds= ["/"]]
+[connection signal="pressed" from="operations/sub" to="." method="on_symbol_pressed" binds= ["-"]]
+[connection signal="pressed" from="operations/add" to="." method="on_symbol_pressed" binds= ["+"]]
