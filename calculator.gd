@@ -2,11 +2,11 @@ extends Control
 
 @onready var display = $display
 
-var display_value: String
-
-var current_opperation: String
-
+var current_opperation
+var display_value
 var last_value
+
+var comma
 
 func _ready() -> void:
 	display_value = "0"
@@ -40,16 +40,17 @@ func on_symbol_pressed(symbol: String) -> void:
 		change_display(display_value)
 	if symbol == "clear":
 		if display_value == "0":
-			pass
+			display_value = "0"
+			change_display("0")
 		else:
 			display_value = display_value.left(display_value.length() - 1)
 			change_display(display_value)
 			
 	if symbol == ".":
-		if current_opperation == ".":
+		if comma:
 			pass
 		else:
-			current_opperation = "."
+			comma != comma
 			display_value += str(".")
 			change_display(display_value)
 			
@@ -91,14 +92,14 @@ func on_symbol_pressed(symbol: String) -> void:
 			
 	if symbol == "=":
 		if current_opperation == "+":
-			display_value = str(str_to_var(display_value) + str_to_var(last_value))
+			display_value = str(float(display_value) + float(last_value))
 			change_display(display_value)
 		if current_opperation == "*":
-			display_value = str(str_to_var(display_value) * str_to_var(last_value))
+			display_value = str(float(display_value) * float(last_value))
 			change_display(display_value)
 		if current_opperation == "/":
-			display_value = str(str_to_var(last_value) / str_to_var(display_value))
+			display_value = str(float(last_value) / float(display_value))
 			change_display(display_value)
 		if current_opperation == "-":
-			display_value = str(str_to_var(last_value) - str_to_var(display_value))
+			display_value = str(float(last_value) - float(display_value))
 			change_display(display_value)
