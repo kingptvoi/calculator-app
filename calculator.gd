@@ -2,7 +2,7 @@ extends Control
 
 @onready var display = $display
 
-var current_opperation
+var current_operation
 var display_value
 var last_value
 
@@ -10,7 +10,7 @@ var comma
 
 func _ready() -> void:
 	display_value = "0"
-	current_opperation = ""
+	current_operation = ""
 	change_display(display_value)
 	
 func _process(delta: float) -> void:
@@ -21,7 +21,7 @@ func change_display(value) -> void:
 
 func on_number_pressed(number: int) -> void:
 	if display_value == "0":
-		if current_opperation == ".":
+		if current_operation == ".":
 			display_value += str(".")
 			change_display(display_value)
 		else:
@@ -42,20 +42,27 @@ func font_size():
 	
 
 func on_symbol_pressed(symbol: String) -> void:
+	
 	print(symbol)
+	
 	if symbol == "-+":
 		display_value = str(str_to_var(display_value) * -1)
 		change_display(display_value)
+		
 	if symbol == "ca":
 		display_value = "0"
 		last_value = str(0)
-		current_opperation = ""
+		current_operation = ""
 		change_display(display_value)
+		
 	if symbol == "clear":
 		if display_value == "0":
 			display_value = "0"
 			change_display(display_value)
-		if display_value == "inf":
+		elif display_value == "inf":
+			display_value = "0"
+			change_display(display_value)
+		elif display_value == "-":
 			display_value = "0"
 			change_display(display_value)
 		else:
@@ -71,54 +78,52 @@ func on_symbol_pressed(symbol: String) -> void:
 			change_display(display_value)
 			
 	if symbol == "+":
+		current_operation = "+"
 		if display_value == "0":
 			display_value = "0"
 		else:
-			
-			current_opperation = "+"
 			last_value = str(display_value)
 			display_value = "0"
 			change_display("0")
 			
 	if symbol == "*":
+		current_operation = "*"
 		if display_value == "0":
 			display_value = "0"
 		else:
-			current_opperation = "*"
 			last_value = str(display_value)
 			display_value = "0"
 			change_display("0")
 			
 	if symbol == "/":
+		current_operation = "/"
 		if display_value == "0":
 			display_value = "0"
 		else:
-			current_opperation = "/"
 			last_value = str(display_value)
 			display_value = "0"
 			change_display("0")
 			
 	if symbol == "-":
+		current_operation = "-"
 		if display_value == "0":
 			display_value = "0"
 		else:
-			current_opperation = "-"
 			last_value = str(display_value)
 			display_value = "0"
 			change_display("0")
 			
 	if symbol == "=":
-		if current_opperation == "+":
+		if current_operation == "+":
 			display_value = str(float(display_value) + float(last_value))
 			change_display(display_value)
-		if current_opperation == "*":
+		if current_operation == "*":
 			display_value = str(float(display_value) * float(last_value))
 			change_display(display_value)
-		if current_opperation == "/":
+		if current_operation == "/":
 			display_value = str(float(last_value) / float(display_value))
 			change_display(display_value)
-		if current_opperation == "-":
+		if current_operation == "-":
 			display_value = str(float(last_value) - float(display_value))
 			change_display(display_value)
-	
-	font_size()
+		else: pass
