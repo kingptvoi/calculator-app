@@ -12,9 +12,6 @@ func _ready() -> void:
 	display_value = "0"
 	current_operation = ""
 	change_display(display_value)
-	
-func _process(delta: float) -> void:
-	pass
 
 func change_display(value) -> void:
 	display.text = str(value)
