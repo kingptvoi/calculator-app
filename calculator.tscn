@@ -26,18 +26,19 @@ color = Color(0.149637, 0.199082, 0.173376, 1)
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 16.0
+offset_top = 12.0
 offset_right = 301.0
-offset_bottom = 58.0
+offset_bottom = 62.0
+theme = ExtResource("1_q3t4y")
 color = Color(0.121569, 0.141176, 0.129412, 1)
 
 [node name="display" type="Label" parent="."]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 12.0
-offset_right = 295.0
-offset_bottom = 61.0
-theme_override_font_sizes/font_size = 24
+offset_left = 7.0
+offset_top = 13.0
+offset_right = 292.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 26
 text = "result_here"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -61,10 +62,11 @@ layout_mode = 2
 theme = ExtResource("1_q3t4y")
 text = "c"
 
-[node name="ce" type="Button" parent="buttons"]
+[node name="-+" type="Button" parent="buttons"]
 layout_mode = 2
 theme = ExtResource("1_q3t4y")
-text = "ce"
+theme_override_font_sizes/font_size = 40
+text = "-/+"
 
 [node name="ca" type="Button" parent="buttons"]
 layout_mode = 2
@@ -173,7 +175,7 @@ anchor_mode = 0
 zoom = Vector2(2.4, 2.4)
 
 [connection signal="pressed" from="buttons/clear" to="." method="on_symbol_pressed" binds= ["clear"]]
-[connection signal="pressed" from="buttons/ce" to="." method="on_symbol_pressed" binds= ["ce"]]
+[connection signal="pressed" from="buttons/-+" to="." method="on_symbol_pressed" binds= ["-+"]]
 [connection signal="pressed" from="buttons/ca" to="." method="on_symbol_pressed" binds= ["ca"]]
 [connection signal="pressed" from="buttons/7" to="." method="on_number_pressed" binds= [7]]
 [connection signal="pressed" from="buttons/8" to="." method="on_number_pressed" binds= [8]]

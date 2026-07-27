@@ -12,6 +12,9 @@ func _ready() -> void:
 	display_value = "0"
 	current_opperation = ""
 	change_display(display_value)
+	
+func _process(delta: float) -> void:
+	pass
 
 func change_display(value) -> void:
 	display.text = str(value)
@@ -26,12 +29,22 @@ func on_number_pressed(number: int) -> void:
 	else:
 		display_value += str(number)
 	change_display(display_value)
+	font_size()
 	print(number)
+	
+func font_size():
+	var font_size: float
+	if display_value.length() > 18:
+		font_size = display_value.length() - 18
+	else:
+		font_size = 0
+	display.add_theme_font_size_override("font_size", 26 - font_size)
+	
 
 func on_symbol_pressed(symbol: String) -> void:
 	print(symbol)
-	if symbol == "ce":
-		display_value = "0"
+	if symbol == "-+":
+		display_value = str(str_to_var(display_value) * -1)
 		change_display(display_value)
 	if symbol == "ca":
 		display_value = "0"
@@ -41,7 +54,10 @@ func on_symbol_pressed(symbol: String) -> void:
 	if symbol == "clear":
 		if display_value == "0":
 			display_value = "0"
-			change_display("0")
+			change_display(display_value)
+		if display_value == "inf":
+			display_value = "0"
+			change_display(display_value)
 		else:
 			display_value = display_value.left(display_value.length() - 1)
 			change_display(display_value)
@@ -58,6 +74,7 @@ func on_symbol_pressed(symbol: String) -> void:
 		if display_value == "0":
 			display_value = "0"
 		else:
+			
 			current_opperation = "+"
 			last_value = str(display_value)
 			display_value = "0"
@@ -103,3 +120,5 @@ func on_symbol_pressed(symbol: String) -> void:
 		if current_opperation == "-":
 			display_value = str(float(last_value) - float(display_value))
 			change_display(display_value)
+	
+	font_size()
