@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyouhxxleelbn"]
 
-[ext_resource type="Script" path="res://calculator.gd" id="1_idpfn"]
+[ext_resource type="Script" uid="uid://t2xtok521dxj" path="res://calculator.gd" id="1_idpfn"]
 [ext_resource type="Theme" uid="uid://dqoqk88xshw25" path="res://button_theme.tres" id="1_q3t4y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1ng0"]

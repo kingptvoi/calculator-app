@@ -15,6 +15,8 @@ func _ready() -> void:
 
 func change_display(value) -> void:
 	display.text = str(value)
+	#format_number(int(value))
+	#format_float(int(value))
 
 func on_number_pressed(number: int) -> void:
 	if display_value == "0":
@@ -36,6 +38,26 @@ func font_size():
 	else:
 		font_size = 0
 	display.add_theme_font_size_override("font_size", 26 - font_size)
+	
+func format_number(number: int) -> String:
+	var text := str(number)
+	var result := ""
+
+	while text.length() > 3:
+		result = "," + text.substr(text.length() - 3, 3) + result
+		text = text.substr(0, text.length() - 3)
+
+	return text + result
+	print(text + result)
+	
+func format_float(number: float) -> String:
+	var parts = str(number).split(".")
+	parts[0] = format_number(int(parts[0]))
+
+	if parts.size() > 1:
+		return parts[0] + "." + parts[1]
+
+	return parts[0]
 	
 
 func on_symbol_pressed(symbol: String) -> void:
